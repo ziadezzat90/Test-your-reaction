@@ -1,0 +1,99 @@
+<html>
+	<head>
+	
+		<title>Reaction time</title>
+	
+		<style type="text/css">
+		
+		#shape {
+			
+			background-color:red;
+			height:100px;
+			width:100px;
+			display: none;
+			position:relative;
+			border-radius: random;
+		}
+		
+		#timer {
+			font-weight: bold;
+		
+		}
+		</style>
+	</head>
+
+	<body>
+		
+		<H1>Test Your Reactions!</H1>
+		
+		<p>Click on the boxes and circles as quickly as you can!</p>
+		
+		<p>Your time: <span id="timer"/p>
+		
+		<div id="shape"></div>
+		
+		<script type="text/javascript">
+		
+		var start = new Date();
+		
+		function getRandomColor (){
+			var color = "#";
+			
+			color += "0" +(Math.random()*512|0).toString(16).substr(-2);
+			return color;
+		}
+		
+		function makeShapeAppear(){
+		
+			var top = Math.random()*400;
+			var left = Math.random()*500;
+			var width= Math.random()*200;
+			var border = Math.random();
+			
+			if (border<0.5){
+				border = 0;
+			}
+			else {
+				border = width;
+			}
+			
+			
+			document.getElementById("shape").style.top = top + "px";
+			document.getElementById("shape").style.left = left + "px";
+			document.getElementById("shape").style.width = width + "px";
+			document.getElementById("shape").style.height = width + "px";
+			document.getElementById("shape").style.borderRadius = border + "px";
+			document.getElementById("shape").style.display = "block";
+			document.getElementById("shape").style.backgroundColor = getRandomColor();
+			
+			start = new Date();
+			
+			
+			
+		}
+		
+		
+			
+		
+		setTimeout(makeShapeAppear,Math.random()*2000);
+			
+		document.getElementById("shape").onclick = function(){
+			
+			document.getElementById("shape").style.display="none";
+				
+			setTimeout(makeShapeAppear,Math.random()*2000);
+				
+			var end = new Date();
+			
+			var timeTaken = (end - start)/1000;
+			
+			document.getElementById("timer").innerHTML = timeTaken + " sec.";
+			
+			
+		}
+		
+		</script>
+	
+	</body>
+
+</html>
