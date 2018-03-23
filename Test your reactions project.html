@@ -46,7 +46,9 @@
 		function getRandomColor (){
 			var color = "#";
 			
-			color += "0" +(Math.random()*512|0).toString(16).substr(-2);
+			for (var i=0; i<3 ; i++){
+			color += ("0" + (Math.random()*256|0).toString(16)).substr(-2);
+			}
 			return color;
 		}
 		
